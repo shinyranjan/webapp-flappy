@@ -26,9 +26,6 @@ function preload() {
     game.load.audio("soundtrack", "../assets/Starwars.mp3");
 }
 
-// Initialises the game. This function is only called once.
-if(game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR))
-{
 function create() {
     //background image creation
     var background = game.add.image(0, 0, "backgroundImg");
