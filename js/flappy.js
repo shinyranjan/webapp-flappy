@@ -23,10 +23,12 @@ function preload() {
     game.load.image("pipe","../assets/GEmpire.gif");
     // make backgrond image file available to game and associate with alias backgroundImg
     game.load.image("backgroundImg", "../assets/Deathstar.jpg");
-    game.load.audio("soundtrack", "../assets/Starwars.mp3")
+    game.load.audio("soundtrack", "../assets/Starwars.mp3");
 }
 
 // Initialises the game. This function is only called once.
+if(game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR))
+{
 function create() {
     //background image creation
     var background = game.add.image(0, 0, "backgroundImg");
@@ -53,9 +55,9 @@ function create() {
     game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.add(playerJump);
     // time loop for game to update
     game.time.events.loop(pipeInterval * Phaser.Timer.SECOND, generatePipe);
+    game.sound.play("soundtrack");
 }
-
-// This function updates the scene. It is called for every new frame.
+// This functio n updates the scene. It is called for every new frame.
 function update() {
     // Call gameOver function when player overlaps with any pipe
 
