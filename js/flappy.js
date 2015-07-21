@@ -23,6 +23,7 @@ function preload() {
     game.load.image("pipe","../assets/GEmpire.gif");
     // make backgrond image file available to game and associate with alias backgroundImg
     game.load.image("backgroundImg", "../assets/Deathstar.jpg");
+    game.load.audio("soundtrack", "../assets/Starwars.mp3")
 }
 
 // Initialises the game. This function is only called once.
