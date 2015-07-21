@@ -20,11 +20,14 @@ var pipeInterval = 1.75;
 $("#greeting-form").on("submit", function(event_details) {
     var greeting = "Hello ";
     var name = $("#fullName").val();
-    var greeting_message = greeting + name;
-    $("#greeting-form").fadeOut(1000);
+    var score = $("#score").val();
+    var greeting_message = greeting + name + " " + score;
+    $("#greeting-form").fadeOut(500);
     $("#greeting").append("<p>" + greeting_message + "</p>");
+    $("#greeting").delay(3000);
+    $("#greeting").fadeOut(2000);
     //$("#greeting").append("<p>" + greeting_message + "</p>");
-    event_details.preventDefault();
+    //event_details.preventDefault();
 });
 
 // Loads all resources for the game and gives them names.
@@ -133,4 +136,14 @@ function gameOver() {
     // stop the game (update() function no longer called)
     game.destroy();
     $("#score").val(score.toString());
+    $("#greeting").show();
 }
+
+$.get("/score", function(scores){
+    for (var i = 0; i < scores.length; i++) {
+        $("#scoreBoard").append(
+        "<li>" +
+        scores[i].name + ": " + scores[i].score +
+        "</li>");
+    }
+});

@@ -12,8 +12,21 @@ h1 {
     border: 1px solid gray;
 }
 
-.form-group, button{
-    margin-bottom: 10px !important;
+/*.form-group, button{*/
+    /*margin-bottom: 10px !important;*/
+/*}*/
+
+#greeting {
+    position: absolute;
+    left: 40%;
+    top: 40%;
+    background: #fff;
+    width: 350px;
+    height: 300px;
+    border: 2px solid gray;
+    border-radius: 5px;
+    padding: 20px;
+    display: none;
 }
 
 /*body{*/

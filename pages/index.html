@@ -27,29 +27,8 @@
             </div>
             <div class="col-xs-1"></div>
             <div class="col-xs-3">
-                <div id="greeting">
-                    <form id="greeting-form">
-                        <div class="form-group">
-
-                            <label for="fullName">What's your name?</label>
-                            <input type="text" id="fullName" class="form-control"
-                                   name="fullName" placeholder="Bob">
-
-                            <label for="email">What's your email?</label>
-                            <input type="email" id="email" class="form-control"
-                                   name="email" placeholder="bob@email.com">
-
-                            <input type="hidden" id="score" name="score" value="0">
-
-                        </div>
-                        <button class="btn btn-default" type="submit">OK</button>
-                    </form>
-                </div>
                 <p>The highest scorers are:</p>
-                <ul>
-                    <li class="gold">Me</li>
-                    <li class="score">Myself</li>
-                    <li class="score">I</li>
+                <ul id="scoreBoard">
                 </ul>
             </div>
         </div>
@@ -57,8 +36,26 @@
 
 
         <!--<img src="../assets/gamescreenshot.png"  class="img-rounded img-responsive" />-->
+    </div>
 
+    <div id="greeting">
+        <h3>Save your score</h3>
+        <form id="greeting-form" method="post" action="/score">
+            <div class="form-group">
 
+                <label for="fullName">What's your name?</label>
+                <input type="text" id="fullName" class="form-control"
+                       name="fullName" placeholder="Bob">
+
+                <label for="email">What's your email?</label>
+                <input type="email" id="email" class="form-control"
+                       name="email" placeholder="bob@email.com">
+
+                <input type="hidden" id="score" name="score" value="0">
+
+            </div>
+            <button class="btn btn-default" type="submit">OK</button>
+        </form>
     </div>
 
     <script src="../lib/jquery.js"></script>
