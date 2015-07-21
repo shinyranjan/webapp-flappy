@@ -1,11 +1,9 @@
 body {
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     margin: 0;
     /*width: 100%;*/
-    background: url('Starwars.jpg') no-repeat;
+    background: url('Starwars.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 #game {
     margin: 20px;
