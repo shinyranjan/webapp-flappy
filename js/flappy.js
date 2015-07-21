@@ -13,6 +13,20 @@ var pipes = [];
 // the interval (in seconds) at which new pipe columns are spawned
 var pipeInterval = 1.75;
 
+//jQuery("#fullName").on("keyup", function(event_details) {
+//    console.log($("#fullName").val());
+//});
+
+$("#greeting-form").on("submit", function(event_details) {
+    var greeting = "Hello ";
+    var name = $("#fullName").val();
+    var greeting_message = greeting + name;
+    $("#greeting-form").fadeOut(1000);
+    $("#greeting").append("<p>" + greeting_message + "</p>");
+    //$("#greeting").append("<p>" + greeting_message + "</p>");
+    event_details.preventDefault();
+});
+
 // Loads all resources for the game and gives them names.
 function preload() {
     // make image file available to game and associate with alias playerImg
@@ -54,8 +68,15 @@ function create() {
     game.time.events.loop(pipeInterval * Phaser.Timer.SECOND, generatePipe);
     game.sound.play("soundtrack");
 }
-// This functio n updates the scene. It is called for every new frame.
+// This function updates the scene. It is called for every new frame.
 function update() {
+
+    if(player.body.y < 0) {
+        gameOver();
+    }
+    if(player.body.y > 400){
+        gameOver();
+    }
     // Call gameOver function when player overlaps with any pipe
 
     game.physics.arcade
