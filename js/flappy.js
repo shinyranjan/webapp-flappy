@@ -140,6 +140,10 @@ function gameOver() {
 }
 
 $.get("/score", function(scores){
+    scores.sort(function (scoreA, scoreB){
+        var difference = scoreB.score - scoreA.score;
+        return difference;
+    });
     for (var i = 0; i < scores.length; i++) {
         $("#scoreBoard").append(
         "<li>" +
@@ -147,3 +151,11 @@ $.get("/score", function(scores){
         "</li>");
     }
 });
+
+if(isEmpty(fullName)) {
+    response.send("Please make sure you enter your name.");
+}
+
+function isEmpty(str) {
+    return (!str || 0 === str.length);
+}
