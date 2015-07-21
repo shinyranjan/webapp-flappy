@@ -132,4 +132,5 @@ function changeScore() {
 function gameOver() {
     // stop the game (update() function no longer called)
     game.destroy();
+    $("#score").val(score.toString());
 }
