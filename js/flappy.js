@@ -144,12 +144,16 @@ $.get("/score", function(scores){
         var difference = scoreB.score - scoreA.score;
         return difference;
     });
-    for (var i = 0; i < scores.length; i++) {
-        $("#scoreBoard").append(
-        "<li>" +
-        scores[i].name + ": " + scores[i].score +
-        "</li>");
+    for (var i = 0; i < scores.length && i < 10; i++) {
+     $("#scoreBoard").append(
+     "<li>" +
+     scores[i].name + ": " + scores[i].score +
+     "</li>");
     }
+    //$("#scoreBoard").append(
+    //    "<li>" +
+    //    scores[0].name + ": " + scores[0].score +
+    //    "</li>");
 });
 
 if(isEmpty(fullName)) {
