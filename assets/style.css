@@ -1,5 +1,8 @@
 body {
-    background-color: #3498db;
+    background-image: url("Starwars.jpg");
+    background-size: cover;
+
+
 }
 
 h1 {
