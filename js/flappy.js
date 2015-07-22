@@ -74,10 +74,10 @@ function create() {
 // This function updates the scene. It is called for every new frame.
 function update() {
 
-    if(player.body.y < 0) {
+    if (player.body.y < 0) {
         gameOver();
     }
-    if(player.body.y > 400){
+    if (player.body.y > 400) {
         gameOver();
     }
     // Call gameOver function when player overlaps with any pipe
@@ -87,6 +87,9 @@ function update() {
         pipes,
         gameOver);
 
+    if (game.input.mouse.button == 0) {
+        playerJump();
+    }
 }
 
 // Adds a pipe part to the pipes array
