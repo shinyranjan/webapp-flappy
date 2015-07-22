@@ -76,14 +76,12 @@ function create() {
     // time loop for game to update
     game.time.events.loop(pipeInterval * Phaser.Timer.SECOND, generatePipe);
     game.sound.play("soundtrack");
+    player.anchor.setTo(0.5, 0.5);
 }
 // This function updates the scene. It is called for every new frame.
 function update() {
 
-    if (player.body.y < 0) {
-        gameOver();
-    }
-    if (player.body.y > 400) {
+    if(player.body.y < 0 || player.body.y > 400){
         gameOver();
     }
     // Call gameOver function when player overlaps with any pipe
@@ -96,6 +94,8 @@ function update() {
     if (game.input.mouse.button == 0) {
         playerJump();
     }
+
+    player.rotation = Math.atan(player.body.velocity.y / 1500);
 }
 
 // Adds a pipe part to the pipes array
