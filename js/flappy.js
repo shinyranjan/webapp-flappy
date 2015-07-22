@@ -146,7 +146,9 @@ function gameOver() {
     //game.destroy();
     $("#score").val(score.toString());
     $("#greeting").show();
-    game.state.restart()
+    game.state.restart();
+    game.sound.stop("soundtrack");
+
 }
 
 function refreshScores() {
