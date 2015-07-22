@@ -27,7 +27,13 @@ $("#greeting-form").on("submit", function(event_details) {
     $("#greeting").delay(3000);
     $("#greeting").fadeOut(2000);
     //$("#greeting").append("<p>" + greeting_message + "</p>");
-    //event_details.preventDefault();
+    $.post("/score", {
+        "fullName": name,
+        "score": score
+    }, function(){
+        refreshScores();
+    });
+    event_details.preventDefault();
 });
 
 // Loads all resources for the game and gives them names.
@@ -137,27 +143,32 @@ function changeScore() {
 
 function gameOver() {
     // stop the game (update() function no longer called)
-    game.destroy();
+    //game.destroy();
     $("#score").val(score.toString());
     $("#greeting").show();
+    game.state.restart()
 }
 
-$.get("/score", function(scores){
-    scores.sort(function (scoreA, scoreB){
-        var difference = scoreB.score - scoreA.score;
-        return difference;
+function refreshScores() {
+    $("#scoreBoard").empty();
+    $.get("/score", function (scores) {
+        scores.sort(function (scoreA, scoreB) {
+            var difference = scoreB.score - scoreA.score;
+            return difference;
+        });
+        for (var i = 0; i < scores.length && i < 10; i++) {
+            $("#scoreBoard").append(
+                "<li>" +
+                scores[i].name + ": " + scores[i].score +
+                "</li>");
+        }
+        //$("#scoreBoard").append(
+        //    "<li>" +
+        //    scores[0].name + ": " + scores[0].score +
+        //    "</li>");
     });
-    for (var i = 0; i < scores.length && i < 10; i++) {
-     $("#scoreBoard").append(
-     "<li>" +
-     scores[i].name + ": " + scores[i].score +
-     "</li>");
-    }
-    //$("#scoreBoard").append(
-    //    "<li>" +
-    //    scores[0].name + ": " + scores[0].score +
-    //    "</li>");
-});
+}
+refreshScores();
 
 if(isEmpty(fullName)) {
     response.send("Please make sure you enter your name.");
