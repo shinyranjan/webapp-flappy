@@ -1,8 +1,6 @@
 body {
-    background-image: url("Starwars.jpg");
+    background-image: url("Starwars.gif");
     background-size: cover;
-
-
 }
 
 h1 {
@@ -18,6 +16,16 @@ h1 {
 /*.form-group, button{*/
     /*margin-bottom: 10px !important;*/
 /*}*/
+
+li {
+    color: black;
+    font-size: 20px;
+}
+
+#high-score {
+    color: black;
+    font-size: 25px;
+}
 
 #greeting {
     position: absolute;
