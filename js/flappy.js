@@ -37,7 +37,7 @@ function preload() {
     // make sound file available to game and associate with alias score
     game.load.audio("score", "../assets/point.ogg");
     // make image file available to game and associate with alias pipe
-    game.load.image("pipe","../assets/GEmpire.gif");
+    game.load.image("pipe","../assets/GEmpire.png");
     // make backgrond image file available to game and associate with alias backgroundImg
     game.load.image("backgroundImg", "../assets/Deathstar.jpg");
     game.load.audio("soundtrack", "../assets/Starwars.mp3");
