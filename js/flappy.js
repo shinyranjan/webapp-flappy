@@ -13,6 +13,8 @@ var pipes = [];
 // the interval (in seconds) at which new pipe columns are spawned
 var pipeInterval = 1.75;
 
+var track;
+
 //jQuery("#fullName").on("keyup", function(event_details) {
 //    console.log($("#fullName").val());
 //});
@@ -75,7 +77,7 @@ function create() {
     game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.add(playerJump);
     // time loop for game to update
     game.time.events.loop(pipeInterval * Phaser.Timer.SECOND, generatePipe);
-    game.sound.play("soundtrack");
+    track = game.sound.play("soundtrack");
     player.anchor.setTo(0.5, 0.5);
 }
 // This function updates the scene. It is called for every new frame.
@@ -146,8 +148,8 @@ function gameOver() {
     //game.destroy();
     $("#score").val(score.toString());
     $("#greeting").show();
+    track.stop();
     game.state.restart();
-    game.sound.stop("soundtrack");
 
 }
 
