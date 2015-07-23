@@ -213,6 +213,9 @@ function gameOver() {
     // stop the game (update() function no longer called)
     //game.destroy();
     //background.hide();
+
+    //game.time.events.add(Phaser.Timer.SECOND * 3, fadeInGo());
+
     var background2 = game.add.image(0, 0, "go");
     background2.width = 790;
     background2.height = 400;
@@ -256,3 +259,9 @@ if(isEmpty(fullName)) {
 function isEmpty(str) {
     return (!str || 0 === str.length);
 }
+
+//function fadeInGo() {
+//    var background2 = game.add.image(0, 0, "go");
+//    background2.width = 790;
+//    background2.height = 400;
+//}
