@@ -37,6 +37,8 @@ $("#greeting-form").on("submit", function(event_details) {
     }, function(){
         refreshScores();
     });
+
+    game.ended = true;
     event_details.preventDefault();
 });
 
@@ -58,6 +60,7 @@ function preload() {
 
 function create() {
     game.started = false;
+    game.ended = false;
 
     var splashDisplay = game.add.image(0, 0, "splashDisplayImg");
     splashDisplay.width = 790;
@@ -73,6 +76,7 @@ function start() {
     }
 
     game.started = true;
+    game.paused = false;
 
     //background image creation
 
@@ -102,6 +106,11 @@ function start() {
     game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR).onDown.add(playerJump);
     game.input.keyboard.addKey(Phaser.Keyboard.P).onDown.add(pause);
     game.input.keyboard.addKey(Phaser.Keyboard.U).onDown.add(unPause);
+    game.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.add(function() {
+        if (game.ended) {
+            window.location.reload();
+        }
+    });
     // time loop for game to update
     game.time.events.loop(pipeInterval * Phaser.Timer.SECOND, generatePipe);
     track = game.sound.play("soundtrack");
@@ -219,6 +228,8 @@ function gameOver() {
     var background2 = game.add.image(0, 0, "go");
     background2.width = 790;
     background2.height = 400;
+
+    game.add.text(250, 310, "Press Enter to restart", {fill: "#FFFFFF"});
 
     $("#score").val(score.toString());
     game.paused = true;
